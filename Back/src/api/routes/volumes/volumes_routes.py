@@ -1,13 +1,13 @@
 from flask import Blueprint, make_response, jsonify
-from src.modules.docker import Server
+from Back.src.modules.docker import Server
 
-images_routes_bp = Blueprint(
-    'images', __name__, url_prefix='/servers/<id_server>/images')
+volumes_routes_bp = Blueprint(
+    'volumes', __name__, url_prefix='/servers/<id_server>/volumes')
 
 
-@images_routes_bp.route("/", methods=['GET'])
-def get_images_list(id_server):
-    reponse = None
+@volumes_routes_bp.route("/", methods=["GET"])
+def get_volumes_list(id_server):
+    response = None
     current_server = None
     servers = [
         Server(id="abc123", ip="192.168.15.51",
@@ -22,7 +22,7 @@ def get_images_list(id_server):
             if server.id == id_server:
                 current_server = server
         if current_server:
-            response = current_server.get_images()
+            response = current_server.get_volumes()
             return make_response(jsonify({"Response": response}), 200)
         return make_response(jsonify({"Response": "Sem informações deste servidor!"}), 200)
     except Exception as exception:

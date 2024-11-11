@@ -1,10 +1,10 @@
 from flask import Flask
 from flask_cors import CORS
-from src.api.routes.containers import containers_routes_bp
-from src.api.routes.servers import server_routes_bp
-from src.api.routes.images import images_routes_bp
-from src.api.routes.networks import networks_routes_bp
-from src.api.routes.volumes import volumes_routes_bp
+from Back.src.api.routes.containers import containers_routes_bp
+from Back.src.api.routes.servers import server_routes_bp
+from Back.src.api.routes.images import images_routes_bp
+from Back.src.api.routes.networks import networks_routes_bp
+from Back.src.api.routes.volumes import volumes_routes_bp
 
 app = Flask(__name__)
 CORS(app=app)

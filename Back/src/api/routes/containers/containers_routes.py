@@ -1,12 +1,12 @@
 from flask import Blueprint, make_response, jsonify
-from src.modules.docker import Server
+from Back.src.modules.docker import Server
 
-volumes_routes_bp = Blueprint(
-    'volumes', __name__, url_prefix='/servers/<id_server>/volumes')
+containers_routes_bp = Blueprint(
+    'containers', __name__, url_prefix='/servers/<id_server>/containers')
 
 
-@volumes_routes_bp.route("/", methods=["GET"])
-def get_volumes_list(id_server):
+@containers_routes_bp.route("/", methods=["GET"])
+def get_containers_list(id_server):
     response = None
     current_server = None
     servers = [
@@ -22,7 +22,7 @@ def get_volumes_list(id_server):
             if server.id == id_server:
                 current_server = server
         if current_server:
-            response = current_server.get_volumes()
+            response = current_server.get_containers()
             return make_response(jsonify({"Response": response}), 200)
         return make_response(jsonify({"Response": "Sem informações deste servidor!"}), 200)
     except Exception as exception:

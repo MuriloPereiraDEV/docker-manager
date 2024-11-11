@@ -1,4 +1,4 @@
-from src.db.configuration import DBConnectionHandler
+from Back.src.db.configuration import DBConnectionHandler
 from typing import List
 
 

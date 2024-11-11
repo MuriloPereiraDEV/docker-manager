@@ -1,5 +1,5 @@
 from flask import Blueprint, make_response, jsonify
-from src.modules.docker import Server
+from Back.src.modules.docker import Server
 
 networks_routes_bp = Blueprint(
     'networks', __name__, url_prefix='/servers/<id_server>/networks')

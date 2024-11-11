@@ -1,6 +1,6 @@
 from flask import Blueprint, make_response, jsonify, request
-from src.modules.docker import Server
-from src.modules.db.servers import ServerDB
+from Back.src.modules.docker import Server
+from Back.src.modules.db.servers import ServerDB
 
 server_routes_bp = Blueprint("servers", __name__)
 
@@ -29,5 +29,15 @@ def add_server():
         new_server.id = id
         response = new_server.__dict__
         return make_response(jsonify({"Response": response}), 201)
+    except Exception as exception:
+        return make_response(jsonify({"Error": str(exception)}), 500)
+
+@server_routes_bp.route("/servers/<id>", methods=["PUT"])
+def edit_server(id: str):
+    data = request.get_json()
+    response = None
+    try:
+        
+        return make_response(jsonify({"Response": response}), 200)
     except Exception as exception:
         return make_response(jsonify({"Error": str(exception)}), 500)
